@@ -28,7 +28,7 @@
 
 This hybrid project uses graphql API query language for clean responses, TCP transport layer for microservice, `@nestjs/testing` which uses jest for unit testing and mysql as the relational database. 
 
-To connect other microservices uncomment examples in `app.module`, replace jest with vitest and to use a different database, check the [Prisma docs](https://www.prisma.io/docs/getting-started) e.g.
+To connect other microservices uncomment examples in `main.ts`, replace jest with vitest and to use a different database, check the [Prisma docs](https://www.prisma.io/docs/getting-started) e.g.
 
 *to use CockroachDB*
 
