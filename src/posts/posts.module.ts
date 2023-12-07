@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { PostsResolvers } from './posts.resolvers';
 import { PostsService } from './posts.service';
-import { PrismaModule } from '../prisma/prisma.module';
+import { PostsResolver } from './posts.resolver';
+import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
-  providers: [PostsResolvers, PostsService],
+  providers: [PostsResolver, PostsService],
   imports: [PrismaModule],
 })
 export class PostsModule {}

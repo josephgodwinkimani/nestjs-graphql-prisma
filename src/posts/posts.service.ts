@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Post } from '@prisma/client';
-import { NewPost, UpdatePost } from 'src/graphql.schema';
+// import { CreatePostInput } from './dto/create-post.input';
+// import { UpdatePostInput } from './dto/update-post.input';
 import { PrismaService } from '../prisma/prisma.service';
+import { NewPost, UpdatePost } from '../graphql';
 
 @Injectable()
 export class PostsService {
@@ -12,16 +14,28 @@ export class PostsService {
       where: {
         id,
       },
+      include: {
+        author: true,
+      },
     });
   }
 
   async findAll(): Promise<Post[]> {
-    return this.prisma.post.findMany({});
+    return this.prisma.post.findMany({
+      include: {
+        author: true,
+      },
+    });
   }
 
   async create(input: NewPost): Promise<Post> {
+    const { authorId, ...params_without_authorId } = input;
+
     return this.prisma.post.create({
-      data: input,
+      data: {
+        ...params_without_authorId,
+        author: { connect: { id: authorId } },
+      },
     });
   }
 
