@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "0.0.0.0:27017:27017"
+    networks:
+      - MONGO
+    volumes:
+      - type: volume
+        source: MONGO_DATA
+        target: /data/db
+      - type: volume
+        source: MONGO_CONFIG
+        target: /data/configdb
+  mongo-express:
+    image: mongo-express:1.0.0-18-alpine3.18
+    container_name: mongo-db-ui
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_PORT: "27017"
+    ports:
+      - "0.0.0.0:8081:8081"
+    networks:
+      - MONGO
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+networks:
+  MONGO:
+    name: mongo_mongo
+
+volumes:
+  MONGO_DATA:
+    name: MONGO_DATA
+  MONGO_CONFIG:
+    name: MONGO_CONFIG

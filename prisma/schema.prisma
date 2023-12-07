@@ -11,10 +11,11 @@ generator client {
 }
 
 model User {
-  id    String @id @default(uuid())
+  id    String  @id @default(uuid())
   name  String
-  email String @unique
+  email String  @unique
   posts Post[]
+  path  String?
 }
 
 model Post {

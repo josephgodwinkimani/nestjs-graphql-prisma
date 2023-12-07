@@ -29,6 +29,7 @@ export class UpdateUser {
     id: string;
     name: string;
     email: string;
+    path?: Nullable<string>;
 }
 
 export class Post {
@@ -76,6 +77,7 @@ export class User {
     name: string;
     email: string;
     posts: Post[];
+    path?: Nullable<string>;
 }
 
 type Nullable<T> = T | null;

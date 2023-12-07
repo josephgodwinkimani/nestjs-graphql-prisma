@@ -35,6 +35,6 @@ services:
       mysql-phpmyadmin:
         aliases:
           - mysql
-          
+
 volumes:
   mysql-data:

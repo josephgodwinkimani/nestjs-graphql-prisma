@@ -1,0 +1,1 @@
+export const UPLOAD_SERVICE = 'UPLOAD_SERVICE';

@@ -37,6 +37,7 @@ describe('UsersResolver', () => {
           id: '3f234751-1819-4d96-ad0b-29840796806d',
           name: 'James Koome',
           email: 'jameskoome0@yahoo.com',
+          path: '/uploads/profile-pic.jpeg',
         },
       ];
       jest.spyOn(service, 'findAll').mockResolvedValue(users);
@@ -52,6 +53,7 @@ describe('UsersResolver', () => {
         id: '3f234751-1819-4d96-ad0b-29840796806d',
         name: 'James Koome',
         email: 'jameskoome0@yahoo.com',
+        path: '/uploads/profile-pic.jpeg',
       };
       jest.spyOn(service, 'findOne').mockResolvedValue(user);
 
@@ -62,7 +64,11 @@ describe('UsersResolver', () => {
 
   describe('create', () => {
     it('should create a user and publish a userCreated event', async () => {
-      const input = { name: 'James Koome', email: 'jameskoome0@yahoo.com' };
+      const input = {
+        name: 'James Koome',
+        email: 'jameskoome0@yahoo.com',
+        path: null,
+      };
       const createdUser = { id: '1', ...input };
       jest.spyOn(service, 'create').mockResolvedValue(createdUser);
       //const publishSpy = jest.spyOn(pubSub, 'publish');
@@ -81,6 +87,7 @@ describe('UsersResolver', () => {
         id: '3f234751-1819-4d96-ad0b-29840796806d',
         name: 'James Koome',
         email: 'jameskoome0@yahoo.com',
+        path: '/uploads/profile-pic.jpeg',
       };
       const updatedUser = { id: '1', ...input };
       jest.spyOn(service, 'update').mockResolvedValue(updatedUser);
@@ -100,6 +107,7 @@ describe('UsersResolver', () => {
         id: '3f234751-1819-4d96-ad0b-29840796806d',
         name: 'James Koome',
         email: 'jameskoome0@yahoo.com',
+        path: '/uploads/profile-pic.jpeg',
       };
       jest.spyOn(service, 'delete').mockResolvedValue(input);
 

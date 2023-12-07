@@ -22,11 +22,11 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-### Simple Blog API ( CRUD users, users CRUD posts )
+### Simple Blog API ( CRUD users, users CRUD posts, users upload files )
 
 > [Prisma](https://docs.nestjs.com/recipes/prisma) [GraphQL schema-first](https://docs.nestjs.com/graphql/quick-start#schema-first) [Hybrid application](https://docs.nestjs.com/faq/hybrid-application)
 
-This hybrid project uses graphql API query language for clean responses, TCP transport layer for microservice, `@nestjs/testing` which uses jest for unit testing and mysql as the relational database. 
+This hybrid project uses GraphQL API query language for clean responses, TCP transport layer for microservice, `@nestjs/testing` which uses jest for unit testing and MySQL as the relational database and MongoDB as no-sql database for constantly changing or growing data such as posts. 
 
 To connect other microservices uncomment examples in `main.ts`, replace jest with vitest and to use a different database, check the [Prisma docs](https://www.prisma.io/docs/getting-started) e.g.
 
@@ -56,15 +56,37 @@ datasource db {
 
 ### Installation
 
-1. Install dependencies: `npm install`
-2. Generate TypeScript type definitions for the GraphQL schema: `npm run generate:typings`
-3. Generate a type-safe client to interact with your database: `npm run prisma:gen`
-4. Create mariadb/mysql database and create tables: `npm run prisma:push`
-5. Start server: `npm run start:dev`
+1. Run multi-container Docker applications 
+
+```bash
+# run mongodb, mongo express container
+$ docker-compose -f docker-compose-mongo.yml up -d
+# run mysql, phpmyadmincontainer
+$ docker-compose up -d
+
+```
+2. Install dependencies: `npm install`
+3. Generate TypeScript type definitions for the GraphQL schema: `npm run generate:typings`
+4. Generate a type-safe client to interact with your database: `npm run prisma:gen`
+5. Create mariadb/mysql database and create tables: `npm run prisma:push`
+6. Start server: `npm run start:dev`
+
+## Test
+
+```bash
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
 
 ### Graphql Playground
 
-When the application is running, you can go to [http://localhost:3000/graphql](http://localhost:3001/graphql) to access the GraphQL Playground.  See [here](https://docs.nestjs.com/graphql/quick-start#playground) for more.
+When the application is running, you can go to [http://localhost:3001/graphql](http://localhost:3001/graphql) to access the GraphQL Playground.  See [here](https://docs.nestjs.com/graphql/quick-start#playground) for more.
 
 
 **Create a New User**

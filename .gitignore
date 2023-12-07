@@ -2,6 +2,9 @@
 /dist
 /node_modules
 
+# docker
+/data
+
 # Logs
 logs
 *.log
