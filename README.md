@@ -206,5 +206,5 @@ mutation {
 
 ## Related Projects
 
-- [Refine Boilerplate for Web (PWA), Desktop and Mobile]([https://github.com/josephgodwinkimani/nestjs-graphql-prisma](https://github.com/josephgodwinkimani/refine-starter)) — A Cross-Platform starter template for Refine.dev that utilizes the Simple REST data provider to fetch and display data from a REST API (can easily replace with graphql data provider).
+- [Refine Boilerplate for Web (PWA), Desktop and Mobile](https://github.com/josephgodwinkimani/refine-starter) — A Cross-Platform starter template for Refine.dev that utilizes the Simple REST data provider to fetch and display data from a REST API (can easily replace with graphql data provider).
 - 
