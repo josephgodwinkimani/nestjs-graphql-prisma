@@ -34,7 +34,7 @@
     "@nestjs/microservices": "10.2.10",
     "@nestjs/mongoose": "10.0.2",
     "@nestjs/platform-express": "^10.0.0",
-    "@prisma/client": "4.16.2",
+    "@prisma/client": "7.10.0",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.0",
     "graphql": "16.8.1",
